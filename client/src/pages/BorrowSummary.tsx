@@ -11,7 +11,7 @@ export default function BorrowSummary() {
             <h1 className="font-bold text-xl">Borrow Summary</h1>
         </div>
         <hr className="my-5"/>
-        <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
             {
                 data?.data?.map((borrow:IBorrowObj, index:string) => (
                     <BorrowCard key={index} borrow={borrow}/>

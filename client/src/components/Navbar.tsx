@@ -25,7 +25,7 @@ export default function Navbar() {
     const location = useLocation()
     console.log(location)
     return (
-        <div className='flex justify-between items-center rounded-lg shadow-md py-5 px-10 m-10 bg-background'>
+        <div className='flex flex-col md:flex-row justify-between items-center rounded-lg shadow-md py-5 px-5 md:px-10 mb-5 md:m-10 bg-background'>
             <h1 className='text-primary text-3xl font-bold'>BookBase</h1>
             <ul className='flex gap-4 items-center'>
                 {

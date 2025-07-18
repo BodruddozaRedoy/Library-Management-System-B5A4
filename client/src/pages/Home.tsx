@@ -10,7 +10,7 @@ export default function Home() {
         <Banner/>
         <div className="p-10 rounded-lg bg-background mt-5">
           <h1 className="font-bold text-xl">All Books</h1>
-        <div className="mt-5 grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5  ">
+        <div className="mt-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5  ">
           {
             data?.data?.map((book:IBook, index:string) => (
               <BookCard key={index} book={book}/>

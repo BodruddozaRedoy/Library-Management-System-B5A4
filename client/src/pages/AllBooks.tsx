@@ -12,7 +12,7 @@ export default function AllBooks() {
         <h1 className="font-bold text-2xl">AllBooks</h1>
       </div>
       <hr className="my-5" />
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {
           isLoading && [0,1,2,3].map((_i, index) => <BookCardSkeleton key={index}/>)
         }
