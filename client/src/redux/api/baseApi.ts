@@ -1,9 +1,10 @@
+import { hostname } from './../../../node_modules/zod/src/v4/core/regexes';
 import { type IBorrow, type IBook } from "@/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
     reducerPath: "baseApi",
-    baseQuery: fetchBaseQuery({baseUrl: "http://localhost:5000/api"}),
+    baseQuery: fetchBaseQuery({baseUrl: window.location.hostname === 'localhost' ? "http://localhost:5000/api" : "https://library-management-system-b5-a4-ge8.vercel.app/api"}),
     tagTypes: ["Books", "Borrow"],
     endpoints: (builder) => ({
         getBooks: builder.query({
