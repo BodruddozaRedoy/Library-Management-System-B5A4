@@ -1,12 +1,13 @@
 import React from 'react'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
 import type { IBook } from '@/types'
 import { cn } from '@/lib/utils'
 import { SquarePen, Trash } from 'lucide-react'
-import EditBookModal from './modals/EditBookModal'
+import EditBookModal from '../modals/EditBookModal'
 import { useDeleteBookMutation } from '@/redux/api/baseApi'
 import toast from 'react-hot-toast'
 import Swal from 'sweetalert2'
+import BorrowModal from '../modals/BorrowModal'
 
 
 interface IProps {
@@ -61,7 +62,7 @@ export default function BookCard({ book }: IProps) {
           <EditBookModal book={book} />
 
           <Button onClick={() => handleDeleteBook(book._id)} className='hover:text-red-500' variant={"outline"}><Trash /></Button>
-          <Button>Borrow</Button>
+          <BorrowModal book={book}/>
         </div>
       </div>
     </div>

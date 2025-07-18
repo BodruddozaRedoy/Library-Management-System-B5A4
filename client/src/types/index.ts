@@ -8,3 +8,19 @@ export interface IBook {
     copies: number,
     available: boolean
 }
+
+export interface IBorrow {
+    _id?: string,
+    book: string,
+    quantity: number,
+    dueDate: string
+}
+
+export interface IBorrowObj {
+    totalQuantity: number,
+    book: {
+        title: string,
+        isbn: string
+    }
+
+}
