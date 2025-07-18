@@ -21,7 +21,9 @@ const PORT = 5000;
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield mongoose_1.default.connect(process.env.MONGODB_URI);
+            yield mongoose_1.default.connect(process.env.MONGODB_URI, {
+                dbName: "libraryDB"
+            });
             console.log("Connected to MongoDB Using Mongoose!!");
             server = app_1.default.listen(PORT, () => {
                 console.log(`App is listening on port ${PORT}`);

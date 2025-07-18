@@ -42,7 +42,7 @@ exports.borrowRoutes.post("/borrow", (req, res) => __awaiter(void 0, void 0, voi
         }
         book.copies -= body.quantity;
         yield book.save();
-        yield book_model_1.Book.updateAvailability(body.book);
+        yield book_model_1.Book.updateAvailability(body.book.toString());
         const borrow = yield borrow_models_1.Borrow.create(body);
         res.status(200).json({
             success: true,

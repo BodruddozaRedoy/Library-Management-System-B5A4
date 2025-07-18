@@ -36,7 +36,7 @@ borrowRoutes.post(
       book.copies -= body.quantity;
       await book.save();
 
-      await Book.updateAvailability(body.book);
+      await Book.updateAvailability(body.book.toString());
 
       const borrow = await Borrow.create(body);
       res.status(200).json({
