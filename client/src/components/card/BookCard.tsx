@@ -16,7 +16,7 @@ interface IProps {
 
 export default function BookCard({ book }: IProps) {
   const [deleteBook] = useDeleteBookMutation()
-  const handleDeleteBook = async (id: string) => {
+  const handleDeleteBook = async (id:any) => {
     try {
       Swal.fire({
         title: "Do you want to delete the book?",

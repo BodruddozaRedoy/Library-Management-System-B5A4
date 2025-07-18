@@ -25,6 +25,9 @@ import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { useUpdateBookMutation } from "@/redux/api/baseApi"
 
+
+
+
 interface EditBookModalProps {
     book: IBook
 }
@@ -33,7 +36,7 @@ export default function EditBookModal({ book }: EditBookModalProps) {
     const [updateBook] = useUpdateBookMutation()
     const [open, setOpen] = useState(false)
 
-    const form = useForm({
+    const form = useForm<IBook>({
         defaultValues: {
             title: book.title,
             description: book.description,
