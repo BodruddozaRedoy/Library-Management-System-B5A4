@@ -28,6 +28,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import { cn } from "@/lib/utils"
 import { Calendar } from "../ui/calendar"
 import { format } from "date-fns"
+import { useNavigate } from "react-router"
 
 interface BorrowModal {
     book: IBook
@@ -36,6 +37,7 @@ interface BorrowModal {
 export default function BorrowModal({ book }: BorrowModal) {
     const [createBorrow] = useCreateBorrowMutation()
     const [open, setOpen] = useState(false)
+    const navigate = useNavigate()
 
     const form = useForm()
 
@@ -54,6 +56,7 @@ export default function BorrowModal({ book }: BorrowModal) {
             console.log(res)
             toast.success("Book Borrowed") 
             setOpen(false)
+            navigate("/borrow-summary")
         } catch (error) {
             toast.error("Couldn't borrowed the book")
         }
@@ -63,7 +66,7 @@ export default function BorrowModal({ book }: BorrowModal) {
         <div>
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
-                    <Button className="hover:text-primary" variant="outline">
+                    <Button disabled={!book.available} className="hover:text-primary" variant="outline">
                         Borrow
                     </Button>
                 </DialogTrigger>
@@ -98,6 +101,9 @@ export default function BorrowModal({ book }: BorrowModal) {
                             <FormField
                                 control={form.control}
                                 name="dueDate"
+                                rules={{
+                                    required: "Due date is required"
+                                }}
                                 render={({ field }) => (
                                     <FormItem className="flex flex-col">
                                         <FormLabel>Due Date</FormLabel>
@@ -126,7 +132,7 @@ export default function BorrowModal({ book }: BorrowModal) {
                                                     selected={field.value}
                                                     onSelect={field.onChange}
                                                     disabled={(date) =>
-                                                        date > new Date() || date < new Date("1900-01-01")
+                                                        date < new Date()
                                                     }
                                                     captionLayout="dropdown"
                                                 />

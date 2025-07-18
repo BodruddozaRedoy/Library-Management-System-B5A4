@@ -61,7 +61,7 @@ export default function BookCard({ book }: IProps) {
         <div className='space-x-1 flex items-center'>
           <EditBookModal book={book} />
 
-          <Button onClick={() => handleDeleteBook(book._id)} className='hover:text-red-500' variant={"outline"}><Trash /></Button>
+          <Button  onClick={() => handleDeleteBook(book._id)} className='hover:text-red-500' variant={"outline"}><Trash /></Button>
           <BorrowModal book={book}/>
         </div>
       </div>
