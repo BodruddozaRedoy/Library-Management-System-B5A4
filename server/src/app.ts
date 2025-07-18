@@ -9,7 +9,7 @@ const app: Application = express();
 
 app.use(express.json())
 app.use(cors({
-    origin: ["http://localhost:5173","https://library-management-system-b5-a4.vercel.app"]
+    origin: ["http://localhost:5173","https://library-management-system-b5-a4-ge8.vercel.app"]
 }))
 
 
