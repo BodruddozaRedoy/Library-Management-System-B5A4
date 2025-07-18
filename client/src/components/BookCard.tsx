@@ -4,6 +4,8 @@ import type { IBook } from '@/types'
 import { cn } from '@/lib/utils'
 import { SquarePen, Trash } from 'lucide-react'
 import EditBookModal from './modals/EditBookModal'
+import { useDeleteBookMutation } from '@/redux/api/baseApi'
+import toast from 'react-hot-toast'
 
 
 interface IProps {
@@ -11,6 +13,15 @@ interface IProps {
 }
 
 export default function BookCard({book}:IProps) {
+  const [deleteBook] = useDeleteBookMutation()
+  const handleDeleteBook = async (id) => {
+    try {
+      await deleteBook(id).unwrap()
+      toast.success("Book deleted")
+    } catch (error) {
+      toast.error("Couldn't delete the book")
+    }
+  }
   return (
     <div className='bg-background shadow-md p-5 rounded-lg'>
         <h1 className='font-bold text-xl'>{book.title}</h1>
@@ -32,7 +43,7 @@ export default function BookCard({book}:IProps) {
             <div className='space-x-1 flex items-center'>
               <EditBookModal book={book}/>
               
-              <Button variant={"outline"}><Trash/></Button>
+              <Button onClick={() => handleDeleteBook(book._id)} className='hover:text-red-500' variant={"outline"}><Trash /></Button>
               <Button>Borrow</Button>
             </div>
         </div>
