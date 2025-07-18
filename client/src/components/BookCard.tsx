@@ -2,6 +2,9 @@ import React from 'react'
 import { Button } from './ui/button'
 import type { IBook } from '@/types'
 import { cn } from '@/lib/utils'
+import { SquarePen, Trash } from 'lucide-react'
+import EditBookModal from './modals/EditBookModal'
+
 
 interface IProps {
   book: IBook
@@ -26,7 +29,12 @@ export default function BookCard({book}:IProps) {
               "text-green-500": book.available,
               "text-red-500": !book.available
             })}>{book.available ? "Available" : "Unavailable"}</p>
-            <Button>Borrow</Button>
+            <div className='space-x-1 flex items-center'>
+              <EditBookModal book={book}/>
+              
+              <Button variant={"outline"}><Trash/></Button>
+              <Button>Borrow</Button>
+            </div>
         </div>
     </div>
   )
